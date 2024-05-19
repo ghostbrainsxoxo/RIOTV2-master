@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="classes" load_steps=4 format=3 uid="uid://dn12qggs1gnjb"]
+
+[ext_resource type="Script" path="res://Scripts/classes.gd" id="1_hmxc0"]
+[ext_resource type="Resource" uid="uid://3toh6c0dgmwd" path="res://weapons/AK47/AK47.tres" id="1_ppvdc"]
+[ext_resource type="Resource" uid="uid://c0lj5lfrd6gl7" path="res://weapons/M1911/M1911.tres" id="2_y8nev"]
+
+[resource]
+script = ExtResource("1_hmxc0")
+the_class_name = "Class 1"
+Weapon1 = ExtResource("1_ppvdc")
+Weapon2 = ExtResource("2_y8nev")

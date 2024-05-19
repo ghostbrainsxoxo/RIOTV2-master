@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Weapons" load_steps=3 format=3 uid="uid://c0lj5lfrd6gl7"]
+
+[ext_resource type="Script" path="res://weapons/weapons.gd" id="1_4gfa1"]
+[ext_resource type="ArrayMesh" uid="uid://dxdhrlvm8en32" path="res://weapons/M1911/M1911.obj" id="1_s6h7h"]
+
+[resource]
+script = ExtResource("1_4gfa1")
+weapon_name = "M1911"
+auto_fire = false
+secondary_weapon = true
+current_ammo = 7
+magazine = 7
+max_ammo = 999
+damage = 0
+weapon_range = 0
+mesh = ExtResource("1_s6h7h")

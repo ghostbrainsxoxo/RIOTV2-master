@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="classes" load_steps=4 format=3 uid="uid://6is1es2irl25"]
+
+[ext_resource type="Resource" uid="uid://bf20ub7twglvv" path="res://weapons/MP5/MP5.tres" id="1_1nmf6"]
+[ext_resource type="Script" path="res://Scripts/classes.gd" id="1_08njd"]
+[ext_resource type="Resource" uid="uid://22ui57uq5a3j" path="res://weapons/DesertEagle/DesertEagle.tres" id="2_lxdp7"]
+
+[resource]
+script = ExtResource("1_08njd")
+the_class_name = "Class 2"
+Weapon1 = ExtResource("1_1nmf6")
+Weapon2 = ExtResource("2_lxdp7")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Weapons" load_steps=3 format=3 uid="uid://22ui57uq5a3j"]
+
+[ext_resource type="Script" path="res://weapons/weapons.gd" id="1_mq05q"]
+[ext_resource type="ArrayMesh" uid="uid://3ssgl06kdld2" path="res://weapons/DesertEagle/DesertEagle.obj" id="1_q54ki"]
+
+[resource]
+script = ExtResource("1_mq05q")
+weapon_name = "Desert Eagle"
+auto_fire = false
+current_ammo = 7
+magazine = 7
+max_ammo = 999
+damage = 0
+weapon_range = 0
+mesh = ExtResource("1_q54ki")

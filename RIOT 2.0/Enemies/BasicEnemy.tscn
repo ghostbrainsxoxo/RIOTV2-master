@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://vuc1cbfkqwjl"]
+
+[ext_resource type="Script" path="res://Enemies/BasicEnemy.gd" id="1_ewosy"]
+[ext_resource type="Resource" uid="uid://byty51dovkp5n" path="res://Enemies/BasicEnemy.tres" id="2_f2msk"]
+[ext_resource type="Script" path="res://Composables/takedamage.gd" id="2_o5mv0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eijhv"]
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 512
+script = ExtResource("1_ewosy")
+enemyresource = ExtResource("2_f2msk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_eijhv")
+
+[node name="EnemyMesh" type="MeshInstance3D" parent="."]
+
+[node name="EnemyDataLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30249, 0)
+billboard = 1
+text = "NULL"
+
+[node name="TakeDamage" type="Node" parent="."]
+script = ExtResource("2_o5mv0")

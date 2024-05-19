@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cecg0eeeei7xf"]
+
+[node name="Weapon" type="Node3D"]
+metadata/weapon_type = null
+
+[node name="WeaponMesh" type="MeshInstance3D" parent="."]

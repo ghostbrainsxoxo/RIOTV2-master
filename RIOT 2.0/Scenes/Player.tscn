@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3i4v4jv30qr4"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_7hn05"]
+[ext_resource type="Script" path="res://Scripts/FPSManager.gd" id="2_3e0wi"]
+[ext_resource type="Script" path="res://Scripts/InventoryManager.gd" id="3_3523r"]
+[ext_resource type="Resource" uid="uid://dn12qggs1gnjb" path="res://CustomClasses/custom_class_1.tres" id="4_c8vwb"]
+[ext_resource type="PackedScene" uid="uid://bju10fwq0qs5l" path="res://Scenes/PlayerUI.tscn" id="5_7prjg"]
+[ext_resource type="Script" path="res://Composables/takedamage.gd" id="6_qc81y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o0vnq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ptgsw"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_7hn05")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.733936, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+script = ExtResource("2_3e0wi")
+health = 100
+
+[node name="Inventory" type="Node3D" parent="Head/Camera3D" node_paths=PackedStringArray("userweapon1", "userweapon2")]
+script = ExtResource("3_3523r")
+CLASS = ExtResource("4_c8vwb")
+userweapon1 = NodePath("MP5")
+userweapon2 = NodePath("Desert Eagle")
+
+[node name="PlayerUI" parent="Head/Camera3D" instance=ExtResource("5_7prjg")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_o0vnq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ptgsw")
+
+[node name="TakeDamage" type="Node" parent="."]
+script = ExtResource("6_qc81y")
