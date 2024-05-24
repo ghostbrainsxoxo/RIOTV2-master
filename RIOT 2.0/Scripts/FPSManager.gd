@@ -1,25 +1,17 @@
 extends Camera3D
 
-signal changed
-
-@export var health: int:
-	set(_health):
-		if _health != health:
-			health = _health
-			changed.emit()
-	get:
-		return health
 @export var nextweapon = Node
 @export var currentweapon = Node
-
+@onready var playerentity = $"../../Entity"
 @onready var inventory = $Inventory
 @onready var player_ui = $PlayerUI
+@onready var entity = $"../../Entity"
 
 var Ray_Range = 1000
 
 func _ready():
 	print("Player and inventory linked")
-	self.changed.connect(_on_resource_data_change)
+	entity.entity_resource.changed.connect(_on_resource_data_change)
 	Initialize() #enter state machine
 	#print(str(currentweapon) + "&" + str(nextweapon))
 
@@ -27,7 +19,7 @@ func Initialize():
 	currentweapon = inventory.userweapon1
 	nextweapon = inventory.userweapon2
 	player_ui.weapon_name.append_text(str(currentweapon))
-	player_ui.healthlabel.append_text("Health: " + str(health))
+	player_ui.healthlabel.append_text("Health: " + str(playerentity.entity_resource.health))
 	for child in inventory.get_children():
 		if child != currentweapon:
 			child.visible = false
@@ -75,7 +67,4 @@ func Get_Camera_Collision():
 		print("Nothing")
 
 func _on_resource_data_change():
-	inventory.healthlabel.text = str(health)
-	if health == 0:
-		queue_free()
-	pass
+	player_ui.healthlabel.text = str(str(entity.entity_resource.health))

@@ -1,6 +1,7 @@
 class_name TakeDamage extends Node
 
+
 func execute():
-	owner.enemyresource.health = owner.enemyresource.health - 10
-	print(owner.enemyresource.health)
+	owner.entity_resource.health = owner.entity_resource.health - 10
+	print(owner.entity_resource.health)
 	pass

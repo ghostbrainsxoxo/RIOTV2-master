@@ -27,7 +27,7 @@ mesh = SubResource("CapsuleMesh_vhoex")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30249, 0)
 billboard = 1
 text = "Player
- Health: 20"
+ Health: 200"
 
 [node name="TakeDamage" type="Node" parent="Entity"]
 script = ExtResource("3_1bjfs")

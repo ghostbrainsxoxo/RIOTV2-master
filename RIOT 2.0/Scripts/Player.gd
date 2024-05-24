@@ -18,12 +18,16 @@ const FOV_CHANGE = 1.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
 
+@onready var playerentity = $Entity
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var inventory = $Head/Camera3D/Inventory
 
+@export var entity_resource: Resource
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	entity_resource = playerentity.entity_resource
 
 
 func _unhandled_input(event):

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvnqauexcfqcj"]
+[gd_scene load_steps=10 format=3 uid="uid://dvnqauexcfqcj"]
 
-[ext_resource type="PackedScene" uid="uid://b3i4v4jv30qr4" path="res://Scenes/Player.tscn" id="1_08b4o"]
-[ext_resource type="PackedScene" uid="uid://vuc1cbfkqwjl" path="res://Enemies/BasicEnemy.tscn" id="2_p2y4p"]
+[ext_resource type="PackedScene" uid="uid://puigyj62a12f" path="res://Scenes/Player.tscn" id="1_08b4o"]
+[ext_resource type="PackedScene" uid="uid://vuc1cbfkqwjl" path="res://Enemies/BasicEntity.tscn" id="2_p2y4p"]
+[ext_resource type="Script" path="res://Composables/damagearea.gd" id="3_6wjse"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hwtbh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,6 +21,8 @@ glow_enabled = true
 albedo_color = Color(0.054902, 0.498039, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rsphj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7jucp"]
 
 [node name="TestArena" type="Node3D"]
 
@@ -40,16 +43,24 @@ mesh = SubResource("PlaneMesh_rsphj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9847, 3.08925, -9.8865)
 use_collision = true
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.29833, 1.65796, -6.22944)
-use_collision = true
-
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.29443, -10.0653)
 use_collision = true
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_08b4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93812, 0)
+[node name="Player" parent="." instance=ExtResource("1_08b4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="BasicEnemy" parent="." instance=ExtResource("2_p2y4p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -1)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7505, 1.18886, -9.41353)
+script = ExtResource("3_6wjse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_7jucp")
+
+[node name="Label3D" type="Label3D" parent="Area3D"]
+text = "DAMAGE AREA"
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

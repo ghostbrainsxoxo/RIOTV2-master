@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=3 format=3 uid="uid://b0ovdoaewpfo"]
+
+[ext_resource type="Script" path="res://Scripts/BasicEntityMaker.gd" id="1_shpdt"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vhoex"]
+
+[resource]
+script = ExtResource("1_shpdt")
+entity_name = "Player"
+mesh = SubResource("CapsuleMesh_vhoex")
+health = 20
